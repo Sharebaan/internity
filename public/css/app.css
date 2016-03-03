@@ -1,0 +1,42 @@
+.facdep{
+  box-sizing: border-box;
+  padding-top:100px;
+
+}
+.hf{
+  margin-top:200px;
+}
+.scan input[type="text"]{
+  height:200px;
+  font-size:9em;
+  text-align: center;
+}
+
+.thead{
+  float: left;
+}
+.thead th,.tbody td{
+  display:block;
+}
+.tbody{
+  float:right;
+}
+
+
+.hid:focus{
+    outline:none;
+}
+.hid{
+  -webkit-box-shadow:none !important;
+  -moz-box-shadow:none !important;
+  cursor: default;
+  background: #fff;
+  width:1px;
+  height:1px;
+  font-size: 1px;
+  color : #fff;
+  text-shadow : 0 0 0 #fff;
+}
+/*::selection {
+    background: red;
+}*/

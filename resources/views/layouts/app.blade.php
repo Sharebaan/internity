@@ -13,6 +13,9 @@
 
     <!-- Styles -->
     <link href="/public/bootstrap-3.3.6-dist/css/bootstrapth.min.css" rel="stylesheet">
+    <link href="/public/RWD-Table-Patterns-5.0.4/dist/css/rwd-table.min.css" rel="stylesheet">
+    <link href="/public/css/app.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
@@ -50,7 +53,20 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}">Acasa</a></li>
                 </ul>
+                  @if(Auth::user()->admin == 1)
+                    <ul class="nav navbar-nav">
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CMS <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="/cms/useri">Useri</a></li>
+
+
+                        </ul>
+                      </li>
+                    </ul>
+                  @endif
                 @endif
+
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
@@ -76,7 +92,7 @@
     @yield('content')
 
     <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
