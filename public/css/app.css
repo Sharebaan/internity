@@ -1,17 +1,31 @@
+
 .facdep{
   box-sizing: border-box;
   padding-top:100px;
 
 }
+
 .hf{
   margin-top:200px;
 }
-.scan input[type="text"]{
-  height:200px;
-  font-size:9em;
-  text-align: center;
+.brand{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top:0;
+    text-align: center;
+    margin: auto;
 }
-
+.scan input[type="text"]{
+  height:80px;
+  font-size:3.5em;
+  text-align: center;
+  display:block;
+  margin:0 auto;
+}
+.logo{
+  height: 46px;
+}
 .thead{
   float: left;
 }

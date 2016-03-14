@@ -39,8 +39,8 @@
                           </select></td>
                           <td>{{$v->created_at}}</td>
                           <td>{{$v->updated_at}}</td>
-                          <td class="col-md-1"><a href="#" class="edit {{$k}} btn btn-default">Editeaza</a></td>
-                          <td class="save {{$k}}" style="display:none;"><input type="submit"  class="form-control btn btn-default" value="Salveaza"></td>
+                          <td class="col-md-1"><a href="#" class="edit {{$k}} btn btn-primary">Editeaza</a></td>
+                          <td class="save {{$k}}" style="display:none;"><input type="submit"  class="form-control btn btn-primary" value="Salveaza"></td>
                         </tr>
                         <input type="hidden" name="id" value="{{$v->id}}">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">

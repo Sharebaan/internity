@@ -22,20 +22,13 @@
                              </tr>
                              <tr>
                                <th>TotalPlata</th>
-                               <td>{{Session::get('scan')->total_plata}}</td>
+                               <td>{{Session::get('price')}}</td>
                              </tr>
                              <tr>
                                <th>DataScadenta</th>
-                               <td>{{Session::get('scan')->data_scadenta}}</td>
+                               <td>{{Session::get('date')}}</td>
                              </tr>
-                             <tr>
-                               <th>Utilizator</th>
-                               <td>{{Session::get('detplata')}}</td>
-                             </tr>
-                             <tr>
-                               <th>Confirmare</th>
-                               <td>{{Session::get('confirmare')}}</td>
-                             </tr>
+
                            </table>
                         </div>
 
@@ -44,7 +37,7 @@
 
                       <div class="row">
 
-                          <a href="/trimite" type="button" class="col-md-4 col-md-offset-4 btn btn-default">Trimite</a>
+                          <a href="/trimite" type="button" class="col-md-4 col-md-offset-4 btn btn-primary">Trimite</a>
 
 
                         </div>

@@ -16,7 +16,7 @@ class Plata
     public function handle($request, Closure $next)
     {
       if(!$request->session()->has('detplata')){
-        return redirect('/platafacturi');
+        return redirect('/');
       }
         return $next($request);
     }

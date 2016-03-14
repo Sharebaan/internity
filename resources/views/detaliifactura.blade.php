@@ -22,11 +22,11 @@
                              </tr>
                              <tr>
                                <th>TotalPlata</th>
-                               <td>{{Session::get('scan')->total_plata}}</td>
+                               <td>{{Session::get('price')}}</td>
                              </tr>
                              <tr>
                                <th>DataScadenta</th>
-                               <td>{{Session::get('scan')->data_scadenta}}</td>
+                               <td>{{Session::get('date')}}</td>
                              </tr>
 
                            </table>
@@ -38,11 +38,11 @@
                       <div class="row">
 
 
-                          <form class="col-md-4 col-md-offset-4" method="post" action="/detaliiplata">
+                          <form class="col-md-4 col-md-offset-4" method="post" action="/detaliiplata" autocomplete="off">
 
                                 <input type="text" name="utilizator" class="form-control" autofocus placeholder="Utilizator">
-                                <input type="submit" class="form-control btn btn-default" value="Valideaza">
-                              
+                                <input type="submit" class="form-control btn btn-primary" value="Valideaza">
+
                               <input type="hidden" name="_token" value="{{csrf_token()}}">
                           </form>
 

@@ -16,9 +16,12 @@ class Reset
      */
     public function handle($request, Closure $next)
     {
-      if($request->session()->has('scan') || $request->session()->has('detplata')){
+      if($request->session()->has('scan') || $request->session()->has('detplata')
+        || $request->session()->has('price') || $request->session()->has('date')){
         $request->session()->forget('scan');
         $request->session()->forget('detplata');
+        $request->session()->forget('price');
+        $request->session()->forget('date');
       }
         return $next($request);
     }

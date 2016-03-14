@@ -16,7 +16,7 @@ class Factura
     public function handle($request, Closure $next)
     {
         if(!$request->session()->has('scan')){
-          return redirect('/detaliifactura');
+          return redirect('/');
         }
         return $next($request);
     }

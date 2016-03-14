@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Http\Requests;
 use App\Scan;
+use App\Plata;
+use App\Library\FormatData;
+use App\Library\Misc;
+use App\Library\Controll;
 
 class FacturiController extends Controller
 {
@@ -20,62 +24,39 @@ class FacturiController extends Controller
     $val = Validator::make($req->all(), [
         'cod' => 'numeric|required|min:43',
     ]);
-    //dd('da',$val->fails(),strlen($req->cod),$req->cod);
+
     if($val->fails()){return redirect()->back()->withErrors($val)->withInput();}
 
-    $codAbonat = substr($req->cod,0,14);
-    $nrApel = substr($req->cod,14,10);
-    $sumaTotalPlata = substr($req->cod,24,12);
-    $scadenta = substr($req->cod,36,8);
+    Misc::getCode($req);
+    //dd(session()->has('price'));
+    return redirect('/detaliifactura');
 
-    $check = Scan::where('cod',$req->cod)->get();
 
-    if($check->isEmpty()){
-      $scan = new Scan();
-      $scan->cod = $req->cod;
-      $scan->cod_abonat = $codAbonat;
-      $scan->nr_apel = $nrApel;
-      $scan->total_plata = $sumaTotalPlata;
-      $scan->data_scadenta = $scadenta;
-      $scan->save();
-
-      session()->put('scan',$scan);
-      return redirect('/detaliifactura');
-    }else{
-      session()->put('scan',$check->first());
-      return redirect('/detaliifactura');
-    }
-
-  }
-
-  public function detaliifactura(){
-    return view('detaliifactura');
-  }
-
-  public function postdetaliiplata(Request $req){
-    //dd($req->all());
-    session()->put('detplata',$req->utilizator);
-    return redirect('/detaliiplata');
-  }
-
-  public function detaliiplata(){
-    return view('detaliiplata');
   }
 
   public function confirmare(){
+    session()->put(['price'=>FormatData::price(ltrim(session()->get('scan')->total_plata,0))]);
+    session()->put(['date'=>FormatData::date(session()->get('scan')->data_scadenta)]);
     return view('confirmare');
   }
 
   public function postconfirmare(Request $req){
+    $val = Validator::make($req->all(),['suma'=>'numeric']);
+    //dd($val);
+    if($val->fails()){return redirect()->back()->withErrors($val)->withInput();}
     session()->put('confirmare',$req->suma);
     return redirect('/confirmare');
   }
 
   public function trimite(Request $req){
-    if(!$req->session()->has('scan') && !$req->session()->has('detplata') && !$req->session()->has('confirmare')){
+    if(!$req->session()->has('scan') && !$req->session()->has('price') && !$req->session()->has('date') && !$req->session()->has('confirmare')){
       return redirect('/');
     }
 
-    
+
+    //return response()->download(Controll::getPlata(Misc::send($req,1))[0]);
+    Controll::getPlata(Misc::send($req,1));
+    return redirect('/')->with('thankyou','1');
+
   }
 }

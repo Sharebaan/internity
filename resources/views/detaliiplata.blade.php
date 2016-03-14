@@ -22,11 +22,11 @@
                              </tr>
                              <tr>
                                <th>TotalPlata</th>
-                               <td>{{Session::get('scan')->total_plata}}</td>
+                               <td>{{Session::get('price')}}</td>
                              </tr>
                              <tr>
                                <th>DataScadenta</th>
-                               <td>{{Session::get('scan')->data_scadenta}}</td>
+                               <td>{{Session::get('date')}}</td>
                              </tr>
                              <tr>
                                <th>Utilizator</th>
@@ -41,11 +41,16 @@
                       <div class="row">
 
 
-                          <form class="col-md-4 col-md-offset-4" method="post" action="/confirmare">
+                          <form class="col-md-4 col-md-offset-4" method="post" action="/confirmaredepozit" autocomplete="off">
 
                                 <input type="text" name="suma" class="form-control" autofocus placeholder="Introdu suma">
-                                <input type="submit" class="form-control btn btn-default" value="Valideaza">
-                              
+                                @if ($errors->has('suma'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('suma') }}</strong>
+                                    </span>
+                                @endif
+                                <input type="submit" class="form-control btn btn-primary" value="Valideaza">
+
                               <input type="hidden" name="_token" value="{{csrf_token()}}">
                           </form>
 

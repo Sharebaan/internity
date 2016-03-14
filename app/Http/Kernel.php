@@ -53,5 +53,6 @@ class Kernel extends HttpKernel
         'plata'=>\App\Http\Middleware\Plata::class,
         'reset'=>\App\Http\Middleware\Reset::class,
         'confirmare'=>\App\Http\Middleware\Confirmare::class,
+        'facflow'=>\App\Http\Middleware\FacturiFlow::class,
     ];
 }

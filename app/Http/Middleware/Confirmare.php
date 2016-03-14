@@ -15,8 +15,8 @@ class Confirmare
      */
     public function handle($request, Closure $next)
     {
-      if(!$request->session()->has('confirmare')){
-        return redirect('/detaliiplata');
+      if(!$request->session()->has('confirmare') && !$request->session()->has('price')){
+        return redirect('/');
       }
         return $next($request);
     }
